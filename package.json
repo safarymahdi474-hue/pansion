@@ -1,0 +1,12 @@
+{
+  "name": "pansion",
+  "version": "3.0.0",
+  "private": true,
+  "description": "Pansion - study space UI (static, Railway-ready)",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

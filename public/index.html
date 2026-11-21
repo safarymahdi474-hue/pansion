@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-mode="dark" data-accent="amber">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0b1220">
+<meta name="description" content="پانسیون؛ فضای مطالعه‌ی گروهی با زمان‌سنج تمرکز، گروه‌ها و آمار مطالعه.">
+<title>پانسیون | فضای مطالعه</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/fonts/Vazirmatn-var.woff2" as="font" type="font/woff2" crossorigin>
+<script src="/theme-init.js"></script>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<!-- Icon sprite -->
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" focusable="false" class="sprite">
+  <defs>
+    <symbol id="i-dashboard" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-timer" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5"/><path d="M9 2h6"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M8 17v-5"/><path d="M13 17V7"/><path d="M18 17v-8"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M21 4h-7"/><path d="M10 4H3"/><path d="M21 12h-9"/><path d="M8 12H3"/><path d="M21 20h-5"/><path d="M12 20H3"/><path d="M14 2v4"/><path d="M8 10v4"/><path d="M16 18v4"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14"/><path d="M5 12h14"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="m19 6-1 14H6L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m7 4 13 8-13 8z"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></symbol>
+    <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 22V4"/><path d="M5 4h13l-2 4 2 4H5"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M8 6h13"/><path d="M8 12h13"/><path d="M8 18h13"/><path d="M3 6h.01"/><path d="M3 12h.01"/><path d="M3 18h.01"/></symbol>
+    <symbol id="i-flame" viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></symbol>
+    <symbol id="i-camera-off" viewBox="0 0 24 24"><path d="m2 2 20 20"/><path d="M7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h14"/><path d="M9.5 4h5L17 7h3a2 2 0 0 1 2 2v7.5"/><path d="M14.121 15.121A3 3 0 1 1 9.88 10.88"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip-link" href="#main">پرش به محتوای اصلی</a>
+
+<div class="app">
+  <div class="scrim" id="scrim" hidden></div>
+
+  <aside class="sidebar" id="sidebar" aria-label="منوی اصلی">
+    <a class="brand" href="#/home" aria-label="پانسیون، نمای کلی">
+      <span class="brand-symbol" aria-hidden="true">پ</span>
+      <span class="brand-text"><b>پانسیون</b><small>فضای مطالعه‌ی گروهی</small></span>
+    </a>
+
+    <div class="nav-caption" id="cap-work">فضای کار</div>
+    <nav class="nav" aria-labelledby="cap-work">
+      <a class="nav-link" href="#/home" data-page="home"><svg class="ico" aria-hidden="true"><use href="#i-dashboard"/></svg><span>نمای کلی</span></a>
+      <a class="nav-link" href="#/groups" data-page="groups"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg><span>گروه‌های من</span></a>
+      <a class="nav-link" href="#/focus" data-page="focus"><svg class="ico" aria-hidden="true"><use href="#i-timer"/></svg><span>تمرکز</span></a>
+      <a class="nav-link" href="#/stats" data-page="stats"><svg class="ico" aria-hidden="true"><use href="#i-chart"/></svg><span>آمار مطالعه</span></a>
+    </nav>
+
+    <div class="nav-caption second" id="cap-acc">حساب و تنظیمات</div>
+    <nav class="nav" aria-labelledby="cap-acc">
+      <a class="nav-link" href="#/settings" data-page="settings"><svg class="ico" aria-hidden="true"><use href="#i-sliders"/></svg><span>تنظیمات</span></a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <span class="privacy-mark" aria-hidden="true"><svg class="ico"><use href="#i-shield"/></svg></span>
+      <div><b>حریم خصوصی</b><small>دوربین فقط با اجازه‌ی تو</small></div>
+    </div>
+  </aside>
+
+  <div class="main-wrap">
+    <header class="topbar">
+      <button class="icon-btn mobile-menu" id="menuBtn" type="button" aria-label="باز کردن منو" aria-controls="sidebar" aria-expanded="false"><svg class="ico" aria-hidden="true"><use href="#i-menu"/></svg></button>
+      <div class="crumb"><span>پانسیون</span><span class="crumb-sep" aria-hidden="true">/</span><strong id="pageTitle">نمای کلی</strong></div>
+      <div class="top-actions">
+        <span class="status-pill"><span class="status-dot" aria-hidden="true"></span><span class="status-text">فضای شخصی</span></span>
+        <button class="icon-btn" id="quickTheme" type="button" aria-label="تغییر بین تم روشن و تیره">
+          <svg class="ico ico-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+          <svg class="ico ico-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="main" id="main">
+
+      <!-- ============ HOME ============ -->
+      <section class="page" id="page-home" data-title="نمای کلی" hidden>
+        <div class="page-head">
+          <div>
+            <div class="eyebrow">فضای مطالعه‌ی تو</div>
+            <h1 tabindex="-1">روی چیزی که مهمه تمرکز کن.</h1>
+            <p>گروه بساز، زمان مطالعه‌ات را ثبت کن و روندت را دنبال کن.</p>
+          </div>
+          <div class="date-chip" id="today"></div>
+        </div>
+
+        <div class="stats-grid">
+          <article class="metric">
+            <div class="metric-top"><span>زمان مطالعه‌ی امروز</span><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg></div>
+            <strong data-m="todayTotal">۰۰:۰۰:۰۰</strong>
+            <small data-m="todayNote">هنوز جلسه‌ای ثبت نشده</small>
+          </article>
+          <article class="metric">
+            <div class="metric-top"><span>جلسه‌های امروز</span><svg class="ico" aria-hidden="true"><use href="#i-list"/></svg></div>
+            <strong data-m="todaySessions">۰</strong>
+            <small>جلسه‌ی تکمیل‌شده</small>
+          </article>
+          <article class="metric">
+            <div class="metric-top"><span>گروه‌های من</span><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg></div>
+            <strong data-m="groupCount">۰</strong>
+            <small>گروه ساخته‌شده توسط خودت</small>
+          </article>
+        </div>
+
+        <div class="grid-2">
+          <article class="card" data-timer>
+            <div class="card-head">
+              <div><span class="eyebrow">جلسه‌ی تمرکز</span><h2>زمان مطالعه</h2></div>
+              <span class="live" data-t="live"><i aria-hidden="true"></i><span data-t="state">آماده‌ی شروع</span></span>
+            </div>
+            <div class="ring-wrap">
+              <div class="ring" role="timer" aria-label="زمان‌سنج مطالعه">
+                <svg viewBox="0 0 200 200" aria-hidden="true"><circle class="ring-track" cx="100" cy="100" r="88"/><circle class="ring-bar" data-t="ring" cx="100" cy="100" r="88"/></svg>
+                <div class="ring-inner"><strong data-t="time">۰۰:۰۰</strong><span data-t="goalText">بدون هدف</span></div>
+              </div>
+            </div>
+            <div class="btn-row">
+              <button class="btn btn-primary" type="button" data-act="start"><svg class="ico" aria-hidden="true"><use href="#i-play"/></svg><span data-t="startLabel">شروع جلسه</span></button>
+              <button class="btn btn-soft" type="button" data-act="pause"><svg class="ico" aria-hidden="true"><use href="#i-pause"/></svg>مکث</button>
+              <button class="btn btn-ghost" type="button" data-act="finish"><svg class="ico" aria-hidden="true"><use href="#i-flag"/></svg>پایان</button>
+            </div>
+            <p class="subnote">جلسه‌ها در همین مرورگر ذخیره می‌شوند. هدف زمانی را از بخش «تمرکز» انتخاب کن.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-head">
+              <div><span class="eyebrow">همکاری</span><h2>گروه‌های من</h2></div>
+              <a class="btn btn-outline btn-sm" href="#/groups">مشاهده‌ی همه</a>
+            </div>
+            <ul class="mini-list" id="homeGroups" hidden></ul>
+            <div class="empty compact" id="homeGroupsEmpty">
+              <div class="empty-icon" aria-hidden="true"><svg class="ico"><use href="#i-users"/></svg></div>
+              <h3>هنوز گروهی نساخته‌ای</h3>
+              <p>اولین گروه مطالعه‌ات را بساز تا اینجا نمایش داده شود.</p>
+              <button class="btn btn-primary btn-sm" type="button" data-open-group>ساخت گروه</button>
+            </div>
+          </article>
+        </div>
+
+        <article class="card">
+          <div class="card-head">
+            <div><span class="eyebrow">پیشرفت</span><h2>فعالیت اخیر</h2></div>
+            <span class="muted">فقط داده‌های ثبت‌شده‌ی خودت</span>
+          </div>
+          <ul class="session-list" id="homeSessions" hidden></ul>
+          <div class="empty horizontal" id="homeSessionsEmpty">
+            <div class="empty-icon" aria-hidden="true"><svg class="ico"><use href="#i-chart"/></svg></div>
+            <div><h3>هنوز فعالیتی ثبت نشده</h3><p>بعد از پایان اولین جلسه، سابقه‌ی مطالعه‌ات اینجا دیده می‌شود.</p></div>
+          </div>
+        </article>
+      </section>
+
+      <!-- ============ GROUPS ============ -->
+      <section class="page" id="page-groups" data-title="گروه‌های من" hidden>
+        <div class="page-head center">
+          <div>
+            <div class="eyebrow">همکاری و مطالعه</div>
+            <h1 tabindex="-1">گروه‌های من</h1>
+            <p>گروه‌هایی که خودت ساخته‌ای در این بخش قرار می‌گیرند.</p>
+          </div>
+          <button class="btn btn-primary" type="button" data-open-group><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg>ساخت گروه</button>
+        </div>
+        <ul class="groups-list" id="groupsList" hidden></ul>
+        <div class="empty page-empty" id="groupsEmpty">
+          <div class="empty-icon large" aria-hidden="true"><svg class="ico"><use href="#i-users"/></svg></div>
+          <h2>اینجا فعلاً خالی است</h2>
+          <p>هیچ گروه نمونه یا کاربر ساختگی اضافه نشده. با ساخت اولین گروه، این بخش پر می‌شود.</p>
+          <button class="btn btn-primary" type="button" data-open-group>ساخت اولین گروه</button>
+        </div>
+      </section>
+
+      <!-- ============ FOCUS ============ -->
+      <section class="page" id="page-focus" data-title="تمرکز" hidden>
+        <div class="page-head">
+          <div>
+            <div class="eyebrow">زمان‌سنج</div>
+            <h1 tabindex="-1">اتاق تمرکز شخصی</h1>
+            <p>یک هدف انتخاب کن، جلسه را شروع کن و بدون حواس‌پرتی درس بخوان.</p>
+          </div>
+        </div>
+        <article class="card focus-card" data-timer>
+          <div class="goal-picker" role="group" aria-label="هدف زمانی جلسه">
+            <button class="chip" type="button" data-goal="25" aria-pressed="false">۲۵ دقیقه</button>
+            <button class="chip" type="button" data-goal="45" aria-pressed="false">۴۵ دقیقه</button>
+            <button class="chip" type="button" data-goal="60" aria-pressed="false">۶۰ دقیقه</button>
+            <button class="chip" type="button" data-goal="0" aria-pressed="false">بدون هدف</button>
+          </div>
+          <div class="ring big" role="timer" aria-label="زمان‌سنج مطالعه">
+            <svg viewBox="0 0 200 200" aria-hidden="true"><circle class="ring-track" cx="100" cy="100" r="88"/><circle class="ring-bar" data-t="ring" cx="100" cy="100" r="88"/></svg>
+            <div class="ring-inner"><strong data-t="time">۰۰:۰۰</strong><span data-t="state">آماده‌ی شروع</span></div>
+          </div>
+          <p class="goal-hint" data-t="goalText">بدون هدف</p>
+          <div class="btn-row">
+            <button class="btn btn-primary" type="button" data-act="start"><svg class="ico" aria-hidden="true"><use href="#i-play"/></svg><span data-t="startLabel">شروع جلسه</span></button>
+            <button class="btn btn-soft" type="button" data-act="pause"><svg class="ico" aria-hidden="true"><use href="#i-pause"/></svg>مکث</button>
+            <button class="btn btn-ghost" type="button" data-act="finish"><svg class="ico" aria-hidden="true"><use href="#i-flag"/></svg>پایان جلسه</button>
+          </div>
+          <div class="note-box">
+            <span class="note-ico" aria-hidden="true"><svg class="ico"><use href="#i-camera-off"/></svg></span>
+            <div><b>تشخیص حضور هنوز فعال نشده است</b><p>این نسخه به دوربین دسترسی نمی‌گیرد و هیچ تصویری ضبط یا ارسال نمی‌کند.</p></div>
+          </div>
+        </article>
+      </section>
+
+      <!-- ============ STATS ============ -->
+      <section class="page" id="page-stats" data-title="آمار مطالعه" hidden>
+        <div class="page-head">
+          <div>
+            <div class="eyebrow">گزارش شخصی</div>
+            <h1 tabindex="-1">آمار مطالعه</h1>
+            <p>آمار فقط از جلسه‌هایی ساخته می‌شود که واقعاً ثبت کرده‌ای.</p>
+          </div>
+        </div>
+        <div class="stats-grid four">
+          <article class="metric"><div class="metric-top"><span>کل زمان ثبت‌شده</span><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg></div><strong data-m="allTotal">۰۰:۰۰:۰۰</strong><small>از جلسه‌های ثبت‌شده در این مرورگر</small></article>
+          <article class="metric"><div class="metric-top"><span>تعداد جلسه‌ها</span><svg class="ico" aria-hidden="true"><use href="#i-list"/></svg></div><strong data-m="sessionCount">۰</strong><small>جلسه‌ی تکمیل‌شده</small></article>
+          <article class="metric"><div class="metric-top"><span>میانگین هر جلسه</span><svg class="ico" aria-hidden="true"><use href="#i-timer"/></svg></div><strong data-m="avg">—</strong><small>بر اساس همه‌ی جلسه‌ها</small></article>
+          <article class="metric"><div class="metric-top"><span>روزهای پیاپی</span><svg class="ico" aria-hidden="true"><use href="#i-flame"/></svg></div><strong data-m="streak">۰</strong><small>روز پشت‌سر‌هم با مطالعه</small></article>
+        </div>
+        <article class="card">
+          <div class="card-head"><div><span class="eyebrow">روند</span><h2>۷ روز گذشته</h2></div><span class="muted" data-m="weekTotal"></span></div>
+          <div class="chart-box" id="chartBox" hidden><svg id="weekChart" class="chart" viewBox="0 0 700 240" role="img" aria-label="نمودار مطالعه‌ی ۷ روز گذشته"></svg></div>
+          <div class="empty" id="chartEmpty">
+            <div class="empty-icon large" aria-hidden="true"><svg class="ico"><use href="#i-chart"/></svg></div>
+            <h2>هنوز داده‌ای برای نمودار وجود ندارد</h2>
+            <p>بعد از ثبت چند جلسه، نمودار روند مطالعه در این قسمت نمایش داده می‌شود.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-head"><div><span class="eyebrow">سابقه</span><h2>جلسه‌های اخیر</h2></div></div>
+          <ul class="session-list" id="statsSessions" hidden></ul>
+          <p class="muted" id="statsSessionsEmpty">هنوز جلسه‌ای ثبت نشده است.</p>
+        </article>
+      </section>
+
+      <!-- ============ SETTINGS ============ -->
+      <section class="page" id="page-settings" data-title="تنظیمات" hidden>
+        <div class="page-head">
+          <div>
+            <div class="eyebrow">شخصی‌سازی</div>
+            <h1 tabindex="-1">تنظیمات</h1>
+            <p>ظاهر پانسیون را مطابق سلیقه‌ات تنظیم کن؛ انتخاب‌هایت در همین مرورگر ذخیره می‌شود.</p>
+          </div>
+        </div>
+        <article class="card settings">
+          <div class="setting-row">
+            <div class="setting-text"><h3 id="lbl-mode">حالت نمایش</h3><p>روشن، تیره یا هماهنگ با سیستم‌عامل.</p></div>
+            <div class="seg" role="group" aria-labelledby="lbl-mode">
+              <button type="button" class="seg-btn" data-mode="light" aria-pressed="false"><span class="mode-sw m-light" aria-hidden="true"></span>روشن</button>
+              <button type="button" class="seg-btn" data-mode="dark" aria-pressed="false"><span class="mode-sw m-dark" aria-hidden="true"></span>تیره</button>
+              <button type="button" class="seg-btn" data-mode="system" aria-pressed="false"><span class="mode-sw m-system" aria-hidden="true"></span>سیستم</button>
+            </div>
+          </div>
+          <div class="setting-row">
+            <div class="setting-text"><h3 id="lbl-accent">رنگ اصلی</h3><p>رنگ دکمه‌ها، حلقه‌ی زمان‌سنج و نمودارها.</p></div>
+            <div class="accent-picker" role="group" aria-labelledby="lbl-accent">
+              <button type="button" class="accent-btn" data-accent="amber" aria-pressed="false"><span class="dot a-amber" aria-hidden="true"></span>کهربایی</button>
+              <button type="button" class="accent-btn" data-accent="blue" aria-pressed="false"><span class="dot a-blue" aria-hidden="true"></span>آبی</button>
+              <button type="button" class="accent-btn" data-accent="green" aria-pressed="false"><span class="dot a-green" aria-hidden="true"></span>سبز</button>
+              <button type="button" class="accent-btn" data-accent="violet" aria-pressed="false"><span class="dot a-violet" aria-hidden="true"></span>بنفش</button>
+              <button type="button" class="accent-btn" data-accent="rose" aria-pressed="false"><span class="dot a-rose" aria-hidden="true"></span>گلی</button>
+            </div>
+          </div>
+          <div class="setting-row">
+            <div class="setting-text"><h3>اطلاعات محلی</h3><p>گروه‌ها، جلسه‌ها و تنظیمات فقط در حافظه‌ی همین مرورگر نگهداری می‌شوند.</p></div>
+            <div class="btn-row start">
+              <button class="btn btn-soft" type="button" id="exportBtn"><svg class="ico" aria-hidden="true"><use href="#i-download"/></svg>دریافت نسخه‌ی پشتیبان</button>
+              <button class="btn btn-danger" type="button" id="clearBtn"><svg class="ico" aria-hidden="true"><use href="#i-trash"/></svg><span>پاک‌کردن همه‌ی داده‌ها</span></button>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <footer class="footer">پانسیون <span aria-hidden="true">·</span> نسخه‌ی ۳٫۰ <span aria-hidden="true">·</span> داده‌ها فقط روی همین مرورگر هستند</footer>
+    </main>
+  </div>
+</div>
+
+<dialog class="dialog" id="groupDialog" aria-labelledby="dlgTitle">
+  <form class="dialog-body" id="groupForm" novalidate>
+    <button type="button" class="icon-btn dialog-close" id="closeDialog" aria-label="بستن"><svg class="ico" aria-hidden="true"><use href="#i-x"/></svg></button>
+    <div class="eyebrow">گروه جدید</div>
+    <h2 id="dlgTitle">ساخت گروه مطالعه</h2>
+    <p class="dialog-sub">اطلاعات گروهت را وارد کن.</p>
+    <label for="groupName">نام گروه</label>
+    <input id="groupName" name="name" maxlength="40" autocomplete="off" required placeholder="مثلاً مطالعه‌ی زیست" aria-describedby="groupError">
+    <p class="field-error" id="groupError" role="alert" hidden></p>
+    <label for="groupAccess">نوع دسترسی</label>
+    <select id="groupAccess" name="access"><option value="private">خصوصی</option><option value="public">عمومی</option></select>
+    <div class="btn-row start dialog-actions">
+      <button class="btn btn-primary" type="submit">ساخت گروه</button>
+      <button class="btn btn-soft" type="button" id="cancelDialog">انصراف</button>
+    </div>
+    <small class="form-note">این گروه فعلاً فقط روی همین مرورگر ذخیره می‌شود و برای دیگران قابل مشاهده نیست.</small>
+  </form>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="/app.js" defer></script>
+</body>
+</html>
