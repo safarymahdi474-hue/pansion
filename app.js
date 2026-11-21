@@ -1,28 +1,35 @@
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-const pageNames={dashboard:"داشبورد",groups:"گروه‌های من",room:"اتاق مطالعه",chat:"گفت‌وگوی گروهی",reports:"گزارش‌ها",profile:"پروفایل",settings:"تنظیمات"};
-function toast(t){const el=$("#toast");el.textContent=t;el.classList.add("show");setTimeout(()=>el.classList.remove("show"),2400)}
-function go(page){$$(".page").forEach(p=>p.classList.toggle("active",p.id==="page-"+page));$$(".nav-item").forEach(b=>b.classList.toggle("active",b.dataset.page===page));$("#crumbTitle").textContent=pageNames[page]||"داشبورد";$("#sidebar").classList.remove("open");}
+const pageNames={home:"نمای کلی",groups:"گروه‌های من",focus:"تمرکز",stats:"آمار مطالعه",settings:"تنظیمات"};
+function go(page){$$(".page").forEach(p=>p.classList.toggle("active",p.id==="page-"+page));$$(".nav-link").forEach(b=>b.classList.toggle("active",b.dataset.page===page));$("#pageTitle").textContent=pageNames[page]||"نمای کلی";$("#sidebar").classList.remove("open")}
 $$("[data-page]").forEach(b=>b.addEventListener("click",()=>go(b.dataset.page)));
-$$("[data-go]").forEach(b=>b.addEventListener("click",()=>go(b.dataset.go)));
-$("#menuBtn").onclick=()=>$("#sidebar").classList.toggle("open");
-function setTheme(){document.body.classList.toggle("dark");localStorage.setItem("pansion-theme",document.body.classList.contains("dark")?"dark":"light")}
-if(localStorage.getItem("pansion-theme")==="dark")document.body.classList.add("dark");
-$("#themeBtn").onclick=setTheme;$("#themeBtn2").onclick=setTheme;
-$("#today").textContent=new Intl.DateTimeFormat("fa-IR",{weekday:"long",day:"numeric",month:"long"}).format(new Date());
-let seconds=0,interval=null,sessions=0,grace=15;
-const fmt=n=>{let h=Math.floor(n/3600),m=Math.floor(n%3600/60),s=n%60;return [h,m,s].map(x=>String(x).padStart(2,"0")).join(":").replace(/\d/g,d=>"۰۱۲۳۴۵۶۷۸۹"[d])};
-function updateTimer(){let v=fmt(seconds);$("#timer").textContent=v;$("#todayStudy").textContent=v;$("#reportTotal").textContent=v}
-function run(){if(interval)return;interval=setInterval(()=>{seconds++;updateTimer()},1000);$("#timerStatus").textContent="در حال مطالعه";$(".pulse").classList.add("active");$("#startTimer").disabled=true;$("#pauseTimer").disabled=false;$("#finishTimer").disabled=false;$("#timerNote").textContent="جلسه در حال ثبت زمان است."}
-function pause(){clearInterval(interval);interval=null;$("#timerStatus").textContent="متوقف شده";$(".pulse").classList.remove("active");$("#startTimer").disabled=false;$("#startTimer").textContent="ادامه مطالعه";$("#pauseTimer").disabled=true;$("#timerNote").textContent="تایمر متوقف شد؛ با زدن ادامه مطالعه، زمان‌گیری از سر گرفته می‌شود."}
-$("#startTimer").onclick=run;$("#pauseTimer").onclick=pause;
-$("#finishTimer").onclick=()=>{if(seconds===0){toast("هنوز زمانی ثبت نشده.");return}pause();sessions++;$("#reportSessions").textContent=String(sessions).replace(/\d/g,d=>"۰۱۲۳۴۵۶۷۸۹"[d]);$("#startTimer").textContent="شروع مطالعه";$("#timerStatus").textContent="جلسه پایان یافت";$("#timerNote").textContent="جلسه نمایشی پایان یافت. زمان در همین مرورگر باقی می‌ماند.";toast("جلسه مطالعه پایان یافت.");};
-let stream=null;
-$("#cameraBtn").onclick=async()=>{try{stream=await navigator.mediaDevices.getUserMedia({video:true,audio:false});$("#video").srcObject=stream;$("#video").style.display="block";$(".camera-placeholder").style.display="none";$("#cameraState").textContent="فعال";$("#cameraBtn").disabled=true;$("#cameraOff").disabled=false;toast("دوربین فعال شد. تشخیص خودکار هنوز فعال نیست.");}catch(e){toast("دسترسی دوربین ممکن نشد؛ مجوز مرورگر را بررسی کن.")}};
-function stopCamera(){if(stream)stream.getTracks().forEach(t=>t.stop());stream=null;$("#video").srcObject=null;$("#video").style.display="none";$(".camera-placeholder").style.display="grid";$("#cameraState").textContent="خاموش";$("#cameraBtn").disabled=false;$("#cameraOff").disabled=true}
-$("#cameraOff").onclick=stopCamera;window.addEventListener("beforeunload",stopCamera);
-$("#graceSelect").onchange=e=>{grace=Number(e.target.value);toast("زمان انتظار روی "+grace+" ثانیه تنظیم شد.")};
-$("#createGroup").onclick=()=>{const name=prompt("نام گروه جدید را وارد کن:");if(!name||!name.trim())return;const card=document.createElement("article");card.className="group-card";card.dataset.type="private";card.innerHTML='<div class="card-top"><div class="group-symbol violet">گ</div><span class="tag private">خصوصی</span></div><h3></h3><p>گروه تازه ساخته‌شده در نسخه نمایشی.</p><div class="card-meta">♧ ۱ عضو <span>◉ ۱ نفر فعال</span></div><button class="outline-btn" data-go="room">مشاهده اتاق</button>';card.querySelector("h3").textContent=name.trim();$("#groupsGrid").append(card);card.querySelector("[data-go]").onclick=()=>go("room");toast("گروه در نسخه نمایشی ساخته شد.")};
-$("#groupSearch").oninput=filterGroups;$("#groupFilter").onchange=filterGroups;
-function filterGroups(){let q=$("#groupSearch").value.trim();let f=$("#groupFilter").value;$$(".group-card").forEach(c=>c.style.display=(c.textContent.includes(q)&&(f==="all"||c.dataset.type===f))?"":"none")}
-$("#chatForm").onsubmit=e=>{e.preventDefault();let val=$("#chatInput").value.trim();if(!val)return;let m=document.createElement("div");m.className="message mine";let av=document.createElement("span");av.className="member-avatar a2";av.textContent="م";let body=document.createElement("div"),b=document.createElement("b"),p=document.createElement("p"),sm=document.createElement("small");b.textContent="شما";p.textContent=val;sm.textContent=new Intl.DateTimeFormat("fa-IR",{hour:"2-digit",minute:"2-digit"}).format(new Date());body.append(b,p,sm);m.append(av,body);$("#messages").append(m);$("#chatInput").value="";$("#messages").scrollTop=$("#messages").scrollHeight};
-updateTimer();$("#reportSessions").textContent="۰";
+$("#menuBtn").addEventListener("click",()=>$("#sidebar").classList.toggle("open"));
+function toast(msg){const t=$("#toast");t.textContent=msg;t.classList.add("show");clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.classList.remove("show"),2500)}
+const todayText=new Intl.DateTimeFormat("fa-IR",{weekday:"long",day:"numeric",month:"long"}).format(new Date());$("#today").textContent=todayText;
+
+const media=window.matchMedia("(prefers-color-scheme: dark)");
+function applyTheme(mode){const actual=mode==="system"?(media.matches?"dark":"light"):mode;document.body.dataset.theme=actual;localStorage.setItem("pansion-theme-choice",mode);$$(".theme-option").forEach(b=>b.classList.toggle("selected",b.dataset.theme===mode))}
+let themeChoice=localStorage.getItem("pansion-theme-choice")||"dark";applyTheme(themeChoice);
+$$(".theme-option").forEach(b=>b.addEventListener("click",()=>applyTheme(b.dataset.theme)));
+$("#quickTheme").addEventListener("click",()=>applyTheme(document.body.dataset.theme==="dark"?"light":"dark"));
+media.addEventListener?.("change",()=>{if((localStorage.getItem("pansion-theme-choice")||"dark")==="system")applyTheme("system")});
+
+const toFa=n=>String(n).padStart(2,"0").replace(/\d/g,d=>"۰۱۲۳۴۵۶۷۸۹"[d]);
+let elapsed=0, interval=null, startedAt=0, running=false;
+function renderTimer(){const mins=Math.floor(elapsed/60),secs=elapsed%60;const value=toFa(mins)+":"+toFa(secs);$("#timer").textContent=value;$("#timer2").textContent=value;$("#todayTotal").textContent=toFa(Math.floor(elapsed/3600))+":"+toFa(Math.floor(elapsed%3600/60))+":"+toFa(elapsed%60);$("#timerState").textContent=running?"در حال تمرکز":"آماده‌ای؟";$("#timerState2").textContent=running?"در حال تمرکز":"آماده شروع";const deg=Math.min(360,(elapsed%1500)/1500*360);$("#timerRing").style.background=`conic-gradient(var(--accent) ${deg}deg,var(--surface3) ${deg}deg)`;$("#timerRing2").style.background=`conic-gradient(var(--accent) ${deg}deg,var(--surface3) ${deg}deg)`;["pauseTimer","pauseTimer2"].forEach(id=>$("#"+id).disabled=!running);["startTimer","startTimer2"].forEach(id=>$("#"+id).disabled=running);["resetTimer","resetTimer2"].forEach(id=>$("#"+id).disabled=elapsed===0&&!running)}
+function start(){if(running)return;running=true;startedAt=Date.now()-elapsed*1000;interval=setInterval(()=>{elapsed=Math.floor((Date.now()-startedAt)/1000);renderTimer()},500);renderTimer()}
+function pause(){if(!running)return;elapsed=Math.floor((Date.now()-startedAt)/1000);running=false;clearInterval(interval);renderTimer()}
+function finish(){pause();if(elapsed>0){toast("جلسه در این نمونه پایان یافت؛ هنوز در حساب ابری ذخیره نمی‌شود.")}elapsed=0;renderTimer()}
+["startTimer","startTimer2"].forEach(id=>$("#"+id).addEventListener("click",start));
+["pauseTimer","pauseTimer2"].forEach(id=>$("#"+id).addEventListener("click",pause));
+["resetTimer","resetTimer2"].forEach(id=>$("#"+id).addEventListener("click",finish));
+renderTimer();
+
+let groups=[];try{groups=JSON.parse(localStorage.getItem("pansion-groups")||"[]")}catch{groups=[]}
+function renderGroups(){const list=$("#groupsList");list.innerHTML="";groups.forEach(g=>{const card=document.createElement("article");card.className="group-item";const info=document.createElement("div");const name=document.createElement("b");name.textContent=g.name;const meta=document.createElement("small");meta.textContent="ساخته‌شده در همین مرورگر";info.append(name,meta);const access=document.createElement("span");access.className="group-access";access.textContent=g.access==="public"?"عمومی · محلی":"خصوصی · محلی";card.append(info,access);list.append(card)});$("#groupsEmpty").hidden=groups.length>0;$("#groupCount").textContent=toFa(groups.length)}
+function openModal(){$("#groupModal").hidden=false;$("#groupName").focus()}
+function closeModal(){$("#groupModal").hidden=true;$("#groupForm").reset()}
+["createGroup","createGroupEmpty","createGroupHome"].forEach(id=>$("#"+id).addEventListener("click",openModal));
+$("#closeModal").addEventListener("click",closeModal);$("#cancelModal").addEventListener("click",closeModal);
+$("#groupModal").addEventListener("click",e=>{if(e.target===$("#groupModal"))closeModal()});
+$("#groupForm").addEventListener("submit",e=>{e.preventDefault();const name=$("#groupName").value.trim();if(!name)return;groups.push({name,access:$("#groupAccess").value});localStorage.setItem("pansion-groups",JSON.stringify(groups));renderGroups();closeModal();go("groups");toast("گروه در همین مرورگر ایجاد شد.")});
+renderGroups();
