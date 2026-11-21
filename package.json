@@ -1,9 +1,0 @@
-{
-  "name": "pansion",
-  "version": "2.0.0",
-  "private": true,
-  "description": "Pansion minimal empty-state UI",
-  "scripts": {
-    "start": "node server.js"
-  }
-}
